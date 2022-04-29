@@ -13,7 +13,7 @@ public class DealDamage : MonoBehaviour
 
     void LateUpdate(){
         if(Input.GetKeyDown("k")){
-            SendDamage(10);
+            SendDamage(15);
         }
     }
 }
