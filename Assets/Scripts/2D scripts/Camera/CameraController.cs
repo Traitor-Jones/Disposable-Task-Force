@@ -6,7 +6,6 @@ public class CameraController : MonoBehaviour
 {
     // Room camera
     [SerializeField] private float speed;
-    public float currPosX;
     private Vector3 velocity = Vector3.zero;
 
     // Follow player
@@ -20,10 +19,4 @@ public class CameraController : MonoBehaviour
         // Follow Player
         transform.position = new Vector3(player.position.x, transform.position.y, transform.position.z);
     }
-
-    public void MoveToNewRoom(Transform newRoom)
-    {
-        currPosX = newRoom.position.x;
-    }
-
 }

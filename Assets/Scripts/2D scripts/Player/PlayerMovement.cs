@@ -50,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
                 body.gravityScale = 7;
             }
 
-            if (Input.GetKey(KeyCode.Space)){
+            if (Input.GetKeyDown(KeyCode.Space)){
                 Jump();
             }
         }
