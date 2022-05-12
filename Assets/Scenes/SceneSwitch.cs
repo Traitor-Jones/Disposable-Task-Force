@@ -6,6 +6,6 @@ using UnityEngine.SceneManagement;
 public class SceneSwitch : MonoBehaviour
 {
     void OnCollisionEnter(Collision other){
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("MiniGame1_2D");
     }
 }
