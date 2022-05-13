@@ -10,9 +10,13 @@ public struct SpawnOb{
 
 public class spawn : MonoBehaviour{
 public SpawnOb[] enHazards;
+public SpawnOb[] AShips;
+GameObject Hazard;
+GameObject ALShip;
     private void Start()
     {
     StartCoroutine(RandomSpawnEverySeconds(2.0f));
+    StartCoroutine(SpawnAlienShip(15.0f));
     }
 
 IEnumerator RandomSpawnEverySeconds(float seconds)
@@ -27,14 +31,42 @@ IEnumerator RandomSpawnEverySeconds(float seconds)
 
      Vector3 v3Pos = Camera.main.ViewportToWorldPoint(new Vector3(randomX, 0.5f, 2200.0f));
 
-    Instantiate(enHazards[index].item, v3Pos, enHazards[index].Rotation);
-
+    Hazard = Instantiate(enHazards[index].item, v3Pos, enHazards[index].Rotation) as GameObject;
 
     yield return new WaitForSeconds(seconds);
+    Destroy(Hazard, 30);
+  }
+}
+
+
+IEnumerator SpawnAlienShip(float seconds)
+{
+
+  while (true)
+  {
+    float randomX;
+   float randomY;
+   Vector3 v3Pos;
+   int index = Random.Range(0,3);
+   int SpawnAmt = Random.Range(1,4);
+   //Debug.Log(index);
+
+     
+    for (int i = 0; i < SpawnAmt; i++){
+      randomX = Random.Range(0f, 0.5f);
+      randomY = Random.Range(-1.1f, 1.1f);
+      v3Pos = Camera.main.ViewportToWorldPoint(new Vector3(randomX, 0.5f, 1600.0f));
+      ALShip = Instantiate(AShips[index].item, v3Pos, AShips[index].Rotation) as GameObject;
+   //   ALShip.AddComponent<AShip>();
+    }
+    
+
+    yield return new WaitForSeconds(seconds);
+
+
   }
 }
 }
-
 
 
  /* just some notes  
