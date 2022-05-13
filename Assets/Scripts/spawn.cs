@@ -16,7 +16,7 @@ GameObject ALShip;
     private void Start()
     {
     StartCoroutine(RandomSpawnEverySeconds(2.0f));
-    StartCoroutine(SpawnAlienShip(10.0f));
+    StartCoroutine(SpawnAlienShip(15.0f));
     }
 
 IEnumerator RandomSpawnEverySeconds(float seconds)
@@ -34,6 +34,7 @@ IEnumerator RandomSpawnEverySeconds(float seconds)
     Hazard = Instantiate(enHazards[index].item, v3Pos, enHazards[index].Rotation) as GameObject;
 
     yield return new WaitForSeconds(seconds);
+    Destroy(Hazard, 30);
   }
 }
 
@@ -54,13 +55,15 @@ IEnumerator SpawnAlienShip(float seconds)
     for (int i = 0; i < SpawnAmt; i++){
       randomX = Random.Range(0f, 0.5f);
       randomY = Random.Range(-1.1f, 1.1f);
-      v3Pos = Camera.main.ViewportToWorldPoint(new Vector3(randomX, 0.5f, 1500.0f));
+      v3Pos = Camera.main.ViewportToWorldPoint(new Vector3(randomX, 0.5f, 1600.0f));
       ALShip = Instantiate(AShips[index].item, v3Pos, AShips[index].Rotation) as GameObject;
-    //  ALShip.AddComponent<AShip>();
+   //   ALShip.AddComponent<AShip>();
     }
     
 
     yield return new WaitForSeconds(seconds);
+
+
   }
 }
 }

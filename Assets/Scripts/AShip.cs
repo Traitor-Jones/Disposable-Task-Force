@@ -10,13 +10,11 @@ public class AShip : MonoBehaviour
     public float bufferDistance;
     public Transform target;
     bool hit = false;
-    private float timeWhenDestroy;
-    public float TimeAfterDeadToDestroy = 1f;
     // Start is called before the first frame update
     void Start()
     {
-        attackSpeed = 200;
-        attackDistance = 1000;
+        attackSpeed = 150;
+        attackDistance = 1200;
     }
     // Update is called once per frame
     void Update()
@@ -32,20 +30,14 @@ public class AShip : MonoBehaviour
              transform.position = Vector3.MoveTowards(transform.position, target.position, step);
             }
         }
-        if(hit){
-             if (Time.time >= timeWhenDestroy)
-            {
-                Destroy(gameObject);
-            }
 
-        }
+
      
     }
 
      private void OnCollisionEnter(Collision collision)
    {
-     hit = true;
-     timeWhenDestroy = Time.time + TimeAfterDeadToDestroy;
+  Destroy(gameObject, 2);
    }
 
      void FaceTarget()
