@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Indicator.meta
 guid: 4e19948745219114398ab04ac753f6c8
 folderAsset: yes
+========
+guid: 86f010cb7288fbc4c84420c82789746c
+>>>>>>>> master:Assets/Scenes/Minigame1_2D.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
