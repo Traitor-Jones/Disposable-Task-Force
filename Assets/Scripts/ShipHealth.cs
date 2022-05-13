@@ -8,14 +8,20 @@ public class ShipHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if(health > 0){
-        health -= damage;
-        Debug.Log("Health = " + health.ToString());
+        if(health > 0) {
+            health -= damage;
+            Debug.Log("Health = " + health.ToString());
         }
-        else{
+        else {
             Debug.Log("Health is already 0");
         }
     }
+
+    public int getHealth()
+    {
+        return health;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
