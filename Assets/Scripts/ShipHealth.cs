@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class ShipHealth : MonoBehaviour
 {
-    public int health;
+    public static int ship_health = 100;
 
     public void TakeDamage(int damage)
     {
-        if(health > 0){
-        health -= damage;
-        Debug.Log("Health = " + health.ToString());
+        if(ship_health > 0){
+        ship_health -= damage;
+        Debug.Log("Health = " + ship_health.ToString());
         }
         else{
             Debug.Log("Health is already 0");
