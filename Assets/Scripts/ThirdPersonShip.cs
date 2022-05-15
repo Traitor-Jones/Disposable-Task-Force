@@ -53,7 +53,7 @@ public class ThirdPersonShip : MonoBehaviour
     private Vector2 pitchYaw;
 
     // movement from controls is disabled until the character presses any key
-    private bool hasMoved = false;
+    private bool hasMoved = true;
 
     // used to get the earth's position
     public GameObject earth;
@@ -87,7 +87,7 @@ public class ThirdPersonShip : MonoBehaviour
         }
 
         if (!hasMoved) {
-            transform.position = new Vector3(earthPosition.x+3000, earthPosition.y, earthPosition.z+3000);
+          //  transform.position = new Vector3(earthPosition.x+3000, earthPosition.y, earthPosition.z+3000);
         }
         else {
             //roll

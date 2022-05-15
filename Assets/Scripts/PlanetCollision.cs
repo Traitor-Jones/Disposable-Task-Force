@@ -5,12 +5,12 @@ using UnityEngine;
 public class PlanetCollision : MonoBehaviour
 {
     public GameObject playerShip;
-    ShipHealth shipHealth;
+    private ShipHealth shipHealth;
+
     // Start is called before the first frame update
     void Start()
     {
         shipHealth = playerShip.GetComponent<ShipHealth>();
-        Debug.Log("PlanetCollision.Start()");
     }
 
     // Update is called once per frame
@@ -21,14 +21,9 @@ public class PlanetCollision : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        //Debug.Log("-----------------------------------------------------");
-        Debug.Log("You have collided with a planet!");
-
-        // will have to check if the other object is a planet
-        // but for now, we'll just assume it is
-        // colliding with a planet causes health to go to 0
-        
+        // set the ship health to 0 and (for now) keep the ship from entering the planet
+        // we will have the ship explode instead at some point
         shipHealth.TakeDamage(shipHealth.getHealth());
-
+        playerShip.GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
 }
