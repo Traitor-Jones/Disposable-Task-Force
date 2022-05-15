@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class Health : MonoBehaviour
     [SerializeField] private float iFrameDuration;
     [SerializeField] private int numFlashes;
     private SpriteRenderer spriteRend;
+
+    [Header("GUI")]
+    [SerializeField] private GameObject exitGUI;
 
     private void Awake()
     {
@@ -43,6 +47,11 @@ public class Health : MonoBehaviour
                 anim.SetTrigger("die");
                 GetComponent<PlayerMovement>().enabled = false;
                 dead = true;
+
+                exitGUI.SetActive(true);
+                int ship_damage = ShipHealth.ship_health / 3;
+                ShipHealth.ship_health -= ship_damage;
+
             }
         }
     }
