@@ -52,9 +52,6 @@ public class ThirdPersonShip : MonoBehaviour
     private float upDown1D;
     private Vector2 pitchYaw;
 
-    // movement from controls is disabled until the character presses any key
-    private bool hasMoved = true;
-
     // used to get the earth's position
     public GameObject earth;
     private Vector3 earthPosition;
@@ -81,76 +78,66 @@ public class ThirdPersonShip : MonoBehaviour
 
     void HandleMovement()
     {
-        if (Input.anyKey)
+        //roll
+        rb.AddRelativeTorque(Vector3.back * roll1D * rollTorque * Time.deltaTime);
+
+        //pitch
+        rb.AddRelativeTorque(Vector3.right * Mathf.Clamp(-pitchYaw.y, -1f, 1f) * pitchTorque * Time.deltaTime);
+
+        //yaw
+        rb.AddRelativeTorque(Vector3.up * Mathf.Clamp(pitchYaw.x, -1f, 1f) * yawTorque * Time.deltaTime);
+
+        //thrust
+        if(thrust1D > 0.1f || thrust1D < -0.1f)
         {
-            hasMoved = true;
+            float currentThrust;
+
+            if(boosting)
+            {
+                currentThrust = thrust * boostMultiplier;
+            }
+            else
+            {
+                currentThrust = thrust;
+            }
+
+            rb.AddRelativeForce(Vector3.forward * thrust1D * currentThrust * Time.deltaTime);
+
+            glide = thrust;
+        }
+        else
+        {
+            rb.AddRelativeForce(Vector3.forward * glide * Time.deltaTime);
+
+            glide *= thrustGlideReduction;
         }
 
-        if (!hasMoved) {
-          //  transform.position = new Vector3(earthPosition.x+3000, earthPosition.y, earthPosition.z+3000);
+        
+        if(upDown1D > 0.1f || upDown1D < -0.1f)
+        {
+            rb.AddRelativeForce(Vector3.up * upDown1D * upThrust * Time.fixedDeltaTime);
+
+            verticalGlide = upDown1D * upThrust;
         }
-        else {
-            //roll
-            rb.AddRelativeTorque(Vector3.back * roll1D * rollTorque * Time.deltaTime);
+        else
+        {
+            rb.AddRelativeForce(Vector3.up * verticalGlide * Time.fixedDeltaTime);
 
-            //pitch
-            rb.AddRelativeTorque(Vector3.right * Mathf.Clamp(-pitchYaw.y, -1f, 1f) * pitchTorque * Time.deltaTime);
+            verticalGlide *= upDownGlideReduction;
+        }
 
-            //yaw
-            rb.AddRelativeTorque(Vector3.up * Mathf.Clamp(pitchYaw.x, -1f, 1f) * yawTorque * Time.deltaTime);
+        //strafe
+        if(strafe1D > 0.1f || strafe1D < -0.1f)
+        {
+            rb.AddRelativeForce(Vector3.right * strafe1D * upThrust * Time.fixedDeltaTime);
 
-            //thrust
-            if(thrust1D > 0.1f || thrust1D < -0.1f)
-            {
-                float currentThrust;
+            horizontalGlide = strafe1D * strafeThrust;
+        }
+        else
+        {
+            rb.AddRelativeForce(Vector3.right * horizontalGlide * Time.fixedDeltaTime);
 
-                if(boosting)
-                {
-                    currentThrust = thrust * boostMultiplier;
-                }
-                else
-                {
-                    currentThrust = thrust;
-                }
-
-                rb.AddRelativeForce(Vector3.forward * thrust1D * currentThrust * Time.deltaTime);
-
-                glide = thrust;
-            }
-            else
-            {
-                rb.AddRelativeForce(Vector3.forward * glide * Time.deltaTime);
-
-                glide *= thrustGlideReduction;
-            }
-
-            
-            if(upDown1D > 0.1f || upDown1D < -0.1f)
-            {
-                rb.AddRelativeForce(Vector3.up * upDown1D * upThrust * Time.fixedDeltaTime);
-
-                verticalGlide = upDown1D * upThrust;
-            }
-            else
-            {
-                rb.AddRelativeForce(Vector3.up * verticalGlide * Time.fixedDeltaTime);
-
-                verticalGlide *= upDownGlideReduction;
-            }
-
-            //strafe
-            if(strafe1D > 0.1f || strafe1D < -0.1f)
-            {
-                rb.AddRelativeForce(Vector3.right * strafe1D * upThrust * Time.fixedDeltaTime);
-
-                horizontalGlide = strafe1D * strafeThrust;
-            }
-            else
-            {
-                rb.AddRelativeForce(Vector3.right * horizontalGlide * Time.fixedDeltaTime);
-
-                horizontalGlide *= leftRightGlideReduction;
-            }
+            horizontalGlide *= leftRightGlideReduction;
         }
     }
 

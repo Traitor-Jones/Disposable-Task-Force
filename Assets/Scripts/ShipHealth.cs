@@ -22,6 +22,11 @@ public class ShipHealth : MonoBehaviour
         return ship_health;
     }
 
+    public void ResetHealth()
+    {
+        ship_health = 100;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
