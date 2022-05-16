@@ -6,6 +6,9 @@ public class PlanetCollision : MonoBehaviour
 {
     public GameObject playerShip;
     public GameObject shipExplosion;
+    public GameObject Earth;
+
+    Vector3 earthPosition;
     Vector3 originalPlayerShipPosition;
 
     private Vector3 shipExplosionPos;
@@ -23,6 +26,9 @@ public class PlanetCollision : MonoBehaviour
     {
         // set the ship's explosion position to the ship's position
         shipExplosionPos = playerShip.transform.position;
+
+        // set the player's original position
+        originalPlayerShipPosition = new Vector3(playerShip.transform.position.x-3000, playerShip.transform.position.y, playerShip.transform.position.z);
     }
 
     void RevivePlayer() {
@@ -44,7 +50,7 @@ public class PlanetCollision : MonoBehaviour
 
         playerShip.SetActive(false);
 
-        // wait a few seconds and then revive the player
+        // wait a 3 seconds and then revive the player
         Invoke("RevivePlayer", 3);
     }
 }
