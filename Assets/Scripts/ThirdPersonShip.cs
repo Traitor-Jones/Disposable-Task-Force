@@ -52,17 +52,26 @@ public class ThirdPersonShip : MonoBehaviour
     private float upDown1D;
     private Vector2 pitchYaw;
 
+    // used to get the earth's position
+    public GameObject earth;
+    private Vector3 earthPosition;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         shipStats = GameObject.FindGameObjectWithTag("Player").GetComponent<ShipHealth>();   
         currentBoostAmount = maxBoostAmount;
+
+        earthPosition = earth.transform.position;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        earthPosition = earth.transform.position;
+        //Debug.Log("Earth's position: " + earth.transform.position);
+
         HandleMovement();
         HandleBoosting();
     }
@@ -103,7 +112,7 @@ public class ThirdPersonShip : MonoBehaviour
             glide *= thrustGlideReduction;
         }
 
-        //up & down
+        
         if(upDown1D > 0.1f || upDown1D < -0.1f)
         {
             rb.AddRelativeForce(Vector3.up * upDown1D * upThrust * Time.fixedDeltaTime);

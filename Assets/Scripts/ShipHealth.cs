@@ -12,10 +12,21 @@ public class ShipHealth : MonoBehaviour
         ship_health -= damage;
         Debug.Log("Health = " + ship_health.ToString());
         }
-        else{
+        else {
             Debug.Log("Health is already 0");
         }
     }
+
+    public int getHealth()
+    {
+        return ship_health;
+    }
+
+    public void ResetHealth()
+    {
+        ship_health = 100;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
