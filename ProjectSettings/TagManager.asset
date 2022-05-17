@@ -7,6 +7,8 @@ TagManager:
   - Ground
   - Enemy
   - SceneChanger
+  - Win
+  - Lose
   layers:
   - Default
   - TransparentFX
