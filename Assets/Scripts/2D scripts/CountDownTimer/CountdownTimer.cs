@@ -7,6 +7,7 @@ public class CountdownTimer : MonoBehaviour
 {
     [SerializeField] Text countdown;
     public GameObject loseText;
+    public GameObject exitLoseButton;
     float currTime = 0f;
     float startTime = 20f;
 
@@ -24,6 +25,7 @@ public class CountdownTimer : MonoBehaviour
         {
             currTime = 0;
             loseText.SetActive(true);
+            exitLoseButton.SetActive(true);
         }
     }
 }
