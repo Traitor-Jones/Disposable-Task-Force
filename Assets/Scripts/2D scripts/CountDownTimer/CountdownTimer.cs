@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class CountdownTimer : MonoBehaviour
 {
     [SerializeField] Text countdown;
-
+    public GameObject loseText;
     float currTime = 0f;
     float startTime = 20f;
 
@@ -23,6 +23,7 @@ public class CountdownTimer : MonoBehaviour
         if(currTime <= 0)
         {
             currTime = 0;
+            loseText.SetActive(true);
         }
     }
 }

@@ -7,7 +7,12 @@ TagManager:
   - Ground
   - Enemy
   - SceneChanger
+<<<<<<< HEAD
+  - Win
+  - Lose
+=======
   - Explosion
+>>>>>>> b313a5919217712066beaafa6c4f69cfb8dad3e9
   layers:
   - Default
   - TransparentFX
