@@ -5,7 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class game_end : MonoBehaviour
 {
+    public GameObject WinUI;
+
     void OnTriggerEnter2D(Collider2D col){
-        SceneManager.LoadScene("MainScene");
+        WinUI.SetActive(true);
     }
 }

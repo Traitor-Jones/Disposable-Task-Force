@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,8 +9,13 @@ public class Message : MonoBehaviour
 
     public int switchCount;
     public GameObject winText;
+    public GameObject exitButton;
     public GameObject countDown;
     private int onCount = 0;
+
+    IEnumerator WinDelay(){
+        yield return new WaitForSeconds(2.0f);
+    }
 
     private void Awake()
     {
@@ -21,6 +26,8 @@ public class Message : MonoBehaviour
         if (onCount == switchCount)
         {
             winText.SetActive(true);
+            
+            exitButton.SetActive(true);
             //countDown.SetActive(false);
         }
     }
