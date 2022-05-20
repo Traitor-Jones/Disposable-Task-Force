@@ -10,7 +10,7 @@ public class SpawnEnemies : MonoBehaviour
     public float maxY;
     public float minY;
     public float timeBetweenSpawn;
-    private float spawnTime;
+    public float spawnTime;
 
     // Update is called once per frame
     void Update()
