@@ -5,14 +5,30 @@ using UnityEngine.SceneManagement;
 
 public class SceneSwitch : MonoBehaviour
 {
-    void Update(){
-        if(Input.GetKeyDown("1")){
-            SceneManager.LoadScene(3);
-            Physics2D.IgnoreLayerCollision(10,11, false);
+    void OnCollisionEnter(Collision collision){
+        if(MainMenu.tutorial && main_instructions.return_from_minigame){
+            int sceneIndex = Random.Range(1, 3);
+            Debug.Log("Collided with Alien");
+            main_instructions.return_from_minigame = false;
+            switch(sceneIndex){
+                case 1:
+                    LoadGame1();
+                    break;
+                case 2:
+                    LoadGame2();
+                    break;
+                default:
+                    break;
+            }
         }
+    }
 
-        if(Input.GetKeyDown("2")){
-            SceneManager.LoadScene(4);
-        }
+    private void LoadGame1(){
+        SceneManager.LoadScene(3);
+        Physics2D.IgnoreLayerCollision(10,11, false);
+    }
+
+    private void LoadGame2(){
+        SceneManager.LoadScene(4);
     }
 }

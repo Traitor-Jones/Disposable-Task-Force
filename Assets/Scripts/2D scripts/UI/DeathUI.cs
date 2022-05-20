@@ -21,7 +21,6 @@ public class DeathUI : MonoBehaviour
         int damage_to_take = (int) temp;
 
         ShipHealth.ship_health -= damage_to_take;
-
         SceneManager.LoadScene("MainScene");
     }
 }
