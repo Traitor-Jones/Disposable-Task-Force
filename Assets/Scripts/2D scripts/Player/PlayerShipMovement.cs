@@ -6,7 +6,8 @@ public class PlayerShipMovement : MonoBehaviour
 {
     public float playerSpeed;
     private Rigidbody2D rb;
-    private Vector2 playerDirection;
+    private Vector2 playerDirectionX;
+    private Vector2 playerDirectionY;
     
     // Start is called before the first frame update
     void Start()
@@ -17,12 +18,14 @@ public class PlayerShipMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float directionX = Input.GetAxisRaw("Horizontal");
         float directionY = Input.GetAxisRaw("Vertical");
-        playerDirection = new Vector2(0, directionY).normalized;
+        playerDirectionY = new Vector2(0, directionY).normalized;
+        playerDirectionX = new Vector2(directionX, 0).normalized;
     }
 
     void FixedUpdate()
     {
-        rb.velocity = new Vector2(0, playerDirection.y * playerSpeed);
+        rb.velocity = new Vector2(playerDirectionX.x * playerSpeed, playerDirectionY.y * playerSpeed);
     }
 }
