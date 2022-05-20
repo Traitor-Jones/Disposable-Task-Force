@@ -14,5 +14,6 @@ public class main_instructions : MonoBehaviour
     public void startGame(){
         InstructionUI.SetActive(false);
         ThirdPersonShip.scene_start = true;
+        MainMenu.tutorial = true;
     }
 }
