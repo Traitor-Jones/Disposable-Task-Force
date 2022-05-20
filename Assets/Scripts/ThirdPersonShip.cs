@@ -41,6 +41,7 @@ public class ThirdPersonShip : MonoBehaviour
     private float leftRightGlideReduction = 0.111f;
     float glide, verticalGlide, horizontalGlide = 0f;
 
+    public static bool scene_start;
     Rigidbody rb;
     ShipHealth shipStats;
     
@@ -55,6 +56,10 @@ public class ThirdPersonShip : MonoBehaviour
     // used to get the earth's position
     public GameObject earth;
     private Vector3 earthPosition;
+
+    void Awake(){
+        scene_start = false;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -71,9 +76,10 @@ public class ThirdPersonShip : MonoBehaviour
     {
         earthPosition = earth.transform.position;
         //Debug.Log("Earth's position: " + earth.transform.position);
-
-        HandleMovement();
-        HandleBoosting();
+        if(scene_start){
+            HandleMovement();
+            HandleBoosting();
+        }
     }
 
     void HandleMovement()
