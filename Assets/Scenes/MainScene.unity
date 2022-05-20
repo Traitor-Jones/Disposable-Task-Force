@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.14545462, g: 0.0941231, b: 0.21724021, a: 1}
+  m_IndirectSpecularColor: {r: 0.14538348, g: 0.09414124, b: 0.21716052, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -823,6 +823,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orbittedObject: {fileID: 92879312}
+  pauseMenuController: {fileID: 1076099742}
   rotationSpeed: 0.05
   revolutionSpeed: 0.003
 --- !u!114 &287477246
@@ -1805,6 +1806,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orbittedObject: {fileID: 92879312}
+  pauseMenuController: {fileID: 1076099742}
   rotationSpeed: 0.08
   revolutionSpeed: 0.006
 --- !u!114 &537371263
@@ -3757,6 +3759,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orbittedObject: {fileID: 92879312}
+  pauseMenuController: {fileID: 1076099742}
   rotationSpeed: 0.08
   revolutionSpeed: 0.005
 --- !u!1 &992389981
@@ -4974,6 +4977,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orbittedObject: {fileID: 92879312}
+  pauseMenuController: {fileID: 1076099742}
   rotationSpeed: 0.05
   revolutionSpeed: 0.004
 --- !u!1 &1456370148
@@ -5669,6 +5673,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orbittedObject: {fileID: 92879312}
+  pauseMenuController: {fileID: 1076099742}
   rotationSpeed: 0.05
   revolutionSpeed: 0.004
 --- !u!114 &1711621165
@@ -6199,6 +6204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orbittedObject: {fileID: 92879312}
+  pauseMenuController: {fileID: 1076099742}
   rotationSpeed: 0.05
   revolutionSpeed: 0.006
 --- !u!4 &1873740740 stripped
@@ -6345,6 +6351,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orbittedObject: {fileID: 92879312}
+  pauseMenuController: {fileID: 1076099742}
   rotationSpeed: 0.05
   revolutionSpeed: 0.0065
 --- !u!1001 &1932392247
@@ -6451,6 +6458,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orbittedObject: {fileID: 92879312}
+  pauseMenuController: {fileID: 1076099742}
   rotationSpeed: 0.05
   revolutionSpeed: 0.003
 --- !u!114 &1932392251
@@ -7084,6 +7092,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orbittedObject: {fileID: 92879312}
+  pauseMenuController: {fileID: 1076099742}
   rotationSpeed: 0.08
   revolutionSpeed: -0.008
 --- !u!114 &2088294396

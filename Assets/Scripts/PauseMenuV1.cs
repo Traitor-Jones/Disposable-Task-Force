@@ -41,4 +41,9 @@ public class PauseMenuV1 : MonoBehaviour
     public void ExitGame(){
         SceneManager.LoadScene("Start");
     }
+
+    public bool IsPaused()
+    {
+        return isPaused;
+    }
 }
