@@ -634,7 +634,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   winUI: {fileID: 1045223728}
   scoreText: {fileID: 377330435}
-  exit_score: 30
 --- !u!114 &377330435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2714,10 +2713,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 7104839499222773548, guid: 9060695d3861a904194e024fb63a5c7f, type: 3}
   maxX: 7
-  minX: 5
+  minX: 4
   maxY: 4.3
   minY: -4.3
-  timeBetweenSpawn: 0.5
+  timeBetweenSpawn: 0.7
   spawnTime: 0
 --- !u!1 &1399002424
 GameObject:
