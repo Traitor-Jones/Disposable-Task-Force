@@ -5,6 +5,8 @@ using UnityEngine;
 public class Orbit : MonoBehaviour
 {
     public GameObject orbittedObject;
+    public GameObject pauseMenuController;
+    PauseMenuV1 pauseMenu;
 
     public float rotationSpeed = 0.05f;
     public float revolutionSpeed = 0.01f;
@@ -12,16 +14,19 @@ public class Orbit : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        pauseMenu = pauseMenuController.GetComponent<PauseMenuV1>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // make the planet rotate around as it orbits the sun
-        transform.Rotate(0.0f, rotationSpeed, 0.0f);
+        if (!pauseMenu.IsPaused())
+        {
+            // make the planet rotate around as it orbits the sun
+            transform.Rotate(0.0f, rotationSpeed, 0.0f);
 
-        // make the planet orbit the sun
-        transform.RotateAround(orbittedObject.transform.position, Vector3.up, revolutionSpeed);
+            // make the planet orbit the sun
+            transform.RotateAround(orbittedObject.transform.position, Vector3.up, revolutionSpeed);
+        }
     }
 }
