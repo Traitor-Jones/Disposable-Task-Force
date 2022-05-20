@@ -140,7 +140,6 @@ GameObject:
   - component: {fileID: 35648446}
   - component: {fileID: 35648445}
   - component: {fileID: 35648447}
-  - component: {fileID: 35648448}
   m_Layer: 0
   m_Name: ThirdPersonShip
   m_TagString: Player
@@ -406,18 +405,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: ce7001440d74daf4c8779e5297f2a187, type: 3}
---- !u!114 &35648448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 35648438}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf9375535aa852d498b85c16a0644a28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &92879312 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1296529005182934, guid: 15a9572a8eb579041a9dbe9f15f6d02e, type: 3}
