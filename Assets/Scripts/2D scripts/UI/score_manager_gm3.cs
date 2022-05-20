@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class score_manager_gm3 : MonoBehaviour
 {
+    [SerializeField] private GameObject winUI;
     public Text scoreText;
     private float score;
 
@@ -13,8 +14,17 @@ public class score_manager_gm3 : MonoBehaviour
     {
         if(GameObject.FindGameObjectWithTag("Player") != null)
         {
-            score += 1 * Time.deltaTime;
-            scoreText.GetComponent<Text>().text = "Time: " + ((int)score).ToString() + " secs";
+            if(PlayerShipMovement.ship_move && SpawnEnemies.start_spawn){
+                score += 1 * Time.deltaTime;
+                scoreText.GetComponent<Text>().text = "Time: " + ((int)score).ToString() + " secs";
+            }
+
+        }
+
+        if(score >= 30){
+            winUI.SetActive(true);
+            PlayerShipMovement.ship_move = false;
+            SpawnEnemies.start_spawn = false;
         }
     }
 }
