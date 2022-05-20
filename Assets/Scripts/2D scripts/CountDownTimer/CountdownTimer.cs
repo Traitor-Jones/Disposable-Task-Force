@@ -8,8 +8,13 @@ public class CountdownTimer : MonoBehaviour
     [SerializeField] Text countdown;
     public GameObject loseText;
     public GameObject exitLoseButton;
+    public static bool game2_start;
     float currTime = 0f;
     float startTime = 20f;
+
+    void Awake(){
+        game2_start = false;
+    }
 
     void Start()
     {
@@ -18,14 +23,16 @@ public class CountdownTimer : MonoBehaviour
 
     void Update()
     {
-        currTime -= 1 * Time.deltaTime;
-        countdown.text = currTime.ToString("0");
+        if(game2_start){
+            currTime -= 1 * Time.deltaTime;
+            countdown.text = currTime.ToString("0");
 
-        if(currTime <= 0)
-        {
-            currTime = 0;
-            loseText.SetActive(true);
-            exitLoseButton.SetActive(true);
+            if(currTime <= 0)
+            {
+                currTime = 0;
+                loseText.SetActive(true);
+                exitLoseButton.SetActive(true);
+            }
         }
     }
 }
