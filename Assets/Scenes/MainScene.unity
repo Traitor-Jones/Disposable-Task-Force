@@ -342,13 +342,13 @@ MonoBehaviour:
   yawTorque: 50
   pitchTorque: 50
   rollTorque: 50
-  thrust: 5000
+  thrust: 10000
   upThrust: 5000
   strafeThrust: 5000
-  maxBoostAmount: 150
+  maxBoostAmount: 20
   boostDeprecationRate: 0.1
-  boostRechargeRate: 0.15
-  boostMultiplier: 5
+  boostRechargeRate: 0.2
+  boostMultiplier: 25
   thrustGlideReduction: 0.5
   upDownGlideReduction: 0.111
   leftRightGlideReduction: 0.111
