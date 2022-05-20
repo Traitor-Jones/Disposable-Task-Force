@@ -8,9 +8,9 @@ public class Intro : MonoBehaviour
 public float scrollSpeed=18;
 
 
-    void Start(){
-        ActivateMe();
-
+  void Awake(){
+       ActivateMe();
+        Time.timeScale = 1;
     }  
 
     // Update is called once per frame
@@ -32,7 +32,7 @@ public float scrollSpeed=18;
  
     IEnumerator RemoveAfterSeconds (int seconds){
         yield return new WaitForSeconds(seconds);
-        gameObject.SetActive(false);
+    //    gameObject.SetActive(false);
          SceneManager.LoadScene("MainScene");
     }
 
