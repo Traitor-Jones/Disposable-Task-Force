@@ -7,7 +7,7 @@ public class SceneSwitch : MonoBehaviour
 {
     void OnCollisionEnter(Collision collision){
         if(MainMenu.tutorial && main_instructions.return_from_minigame){
-            int sceneIndex = Random.Range(1, 3);
+            int sceneIndex = Random.Range(1, 4);
             Debug.Log("Collided with Alien");
             main_instructions.return_from_minigame = false;
             switch(sceneIndex){
@@ -16,6 +16,9 @@ public class SceneSwitch : MonoBehaviour
                     break;
                 case 2:
                     LoadGame2();
+                    break;
+                case 3:
+                    LoadGame3();
                     break;
                 default:
                     break;
@@ -30,5 +33,10 @@ public class SceneSwitch : MonoBehaviour
 
     private void LoadGame2(){
         SceneManager.LoadScene(4);
+    }
+
+    private void LoadGame3(){
+        SceneManager.LoadScene(5);
+        Physics2D.IgnoreLayerCollision(10, 11, false);
     }
 }
