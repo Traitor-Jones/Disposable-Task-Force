@@ -25,10 +25,10 @@ public class Message : MonoBehaviour
         onCount = onCount + points;
         if (onCount == switchCount)
         {
+            CountdownTimer.game2_start = false;
             winText.SetActive(true);
-            
             exitButton.SetActive(true);
-            //countDown.SetActive(false);
+            
         }
     }
     private void Update()

@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpPower;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask wallLayer;
+    [SerializeField] public static bool game1_start;
+    [SerializeField] public static bool movement;
     private Rigidbody2D body;
     private Animator anim;
     private BoxCollider2D boxCollider;
@@ -20,42 +22,46 @@ public class PlayerMovement : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
+        game1_start = false;
+        movement = false;
     }
 
     private void Update()
     {
-        horizontalInput = Input.GetAxis("Horizontal");
+        if(game1_start && movement){
+            horizontalInput = Input.GetAxis("Horizontal");
 
-        //Flip player when moving left-right
-        if (horizontalInput > 0.01f){
-            transform.localScale = new Vector3(-1, 1, 1);
-        }
-        else if (horizontalInput < -0.01f){
-            transform.localScale = Vector3.one;
-        }
+            //Flip player when moving left-right
+            if (horizontalInput > 0.01f){
+                transform.localScale = new Vector3(-1, 1, 1);
+            }
+            else if (horizontalInput < -0.01f){
+                transform.localScale = Vector3.one;
+            }
 
-        //Set animator parameters
-        anim.SetBool("run", horizontalInput != 0);
-        anim.SetBool("grounded", isGrounded());
+            //Set animator parameters
+            anim.SetBool("run", horizontalInput != 0);
+            anim.SetBool("grounded", isGrounded());
 
-        //Wall jump
-        if (wallJumpCD > 0.2f){
-            body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
+            //Wall jump
+            if (wallJumpCD > 0.2f){
+                body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
 
-            if (onWall() && !isGrounded()){
-                body.gravityScale = 0;
-                body.velocity = Vector2.zero;
+                if (onWall() && !isGrounded()){
+                    body.gravityScale = 0;
+                    body.velocity = Vector2.zero;
+                }
+                else{
+                    body.gravityScale = 7;
+                }
+
+                if (Input.GetKeyDown(KeyCode.Space)){
+                    Jump();
+                }
             }
             else{
-                body.gravityScale = 7;
+                wallJumpCD += Time.deltaTime;
             }
-
-            if (Input.GetKeyDown(KeyCode.Space)){
-                Jump();
-            }
-        }
-        else{
-            wallJumpCD += Time.deltaTime;
         }
     }
 

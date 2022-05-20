@@ -18,35 +18,37 @@ public class Wire : MonoBehaviour
     private void OnMouseDrag()
     {
         // mouse position to world point
-        Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        newPosition.z = 0;
+        if(CountdownTimer.game2_start){
+            Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            newPosition.z = 0;
 
-        // check for nearby connection points
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(newPosition, .2f);
-        foreach (Collider2D collider in colliders)
-        {
-            // make sure not my own collider
-            if (collider.gameObject != gameObject)
+            // check for nearby connection points
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(newPosition, .2f);
+            foreach (Collider2D collider in colliders)
             {
-                // update wire to the connection point position
-                UpdateWire(collider.transform.position);
-
-                // check if the wires are same color
-                if (transform.parent.name.Equals(collider.transform.parent.name))
+                // make sure not my own collider
+                if (collider.gameObject != gameObject)
                 {
-                    // count connection
-                    Message.Instance.SwitchChange(1);
+                    // update wire to the connection point position
+                    UpdateWire(collider.transform.position);
 
-                    // finish step
-                    collider.GetComponent<Wire>()?.Done();
-                    Done();
+                    // check if the wires are same color
+                    if (transform.parent.name.Equals(collider.transform.parent.name))
+                    {
+                        // count connection
+                        Message.Instance.SwitchChange(1);
+
+                        // finish step
+                        collider.GetComponent<Wire>()?.Done();
+                        Done();
+                    }
+                    return;
                 }
-                return;
             }
-        }
 
-        // update wire
-        UpdateWire(newPosition);
+            // update wire
+            UpdateWire(newPosition);
+        }
     }
 
     void Done()
