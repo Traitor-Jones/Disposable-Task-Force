@@ -9,11 +9,13 @@ public class CountdownTimer : MonoBehaviour
     public GameObject loseText;
     public GameObject exitLoseButton;
     public static bool game2_start;
+    public static bool counting;
     float currTime = 0f;
     float startTime = 20f;
 
     void Awake(){
         game2_start = false;
+        counting = false;
     }
 
     void Start()
@@ -23,7 +25,7 @@ public class CountdownTimer : MonoBehaviour
 
     void Update()
     {
-        if(game2_start){
+        if(game2_start && counting){
             currTime -= 1 * Time.deltaTime;
             countdown.text = currTime.ToString("0");
 

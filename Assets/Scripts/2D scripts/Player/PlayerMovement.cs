@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask wallLayer;
     [SerializeField] public static bool game1_start;
+    [SerializeField] public static bool movement;
     private Rigidbody2D body;
     private Animator anim;
     private BoxCollider2D boxCollider;
@@ -22,11 +23,12 @@ public class PlayerMovement : MonoBehaviour
         anim = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
         game1_start = false;
+        movement = false;
     }
 
     private void Update()
     {
-        if(game1_start){
+        if(game1_start && movement){
             horizontalInput = Input.GetAxis("Horizontal");
 
             //Flip player when moving left-right
