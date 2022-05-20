@@ -8,6 +8,7 @@ public class SceneSwitch : MonoBehaviour
     void Update(){
         if(Input.GetKeyDown("1")){
             SceneManager.LoadScene(2);
+            Physics2D.IgnoreLayerCollision(10,11, false);
         }
 
         if(Input.GetKeyDown("2")){
