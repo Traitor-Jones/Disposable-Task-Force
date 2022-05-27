@@ -6610,13 +6610,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 64695937244685252, guid: 0b15e029373632949ae6a5f6f56623e4, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 64695937244685252, guid: 0b15e029373632949ae6a5f6f56623e4, type: 3}
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 64695937244685252, guid: 0b15e029373632949ae6a5f6f56623e4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0b15e029373632949ae6a5f6f56623e4, type: 3}
 --- !u!1 &1873740734 stripped
 GameObject:
@@ -6632,12 +6633,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 1873740734}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a98a6a7c970349adaaa93e09c37a4d9, type: 3}
+  m_Script: {fileID: 11500000, guid: 208b73493c70b354bb7afffaeda220fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerShip: {fileID: 35648438}
-  shipExplosion: {fileID: 1034379384}
-  Earth: {fileID: 966958939}
+--- !u!65 &1873740736
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1873740734}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 423.7, y: 452.5, z: 427.7}
+  m_Center: {x: 0.000030517578, y: 0.000015258789, z: 0}
 --- !u!114 &1873740738
 MonoBehaviour:
   m_ObjectHideFlags: 0
