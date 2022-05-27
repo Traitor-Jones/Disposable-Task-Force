@@ -41,6 +41,7 @@ public class ThirdPersonShip : MonoBehaviour
     private float leftRightGlideReduction = 0.111f;
     float glide, verticalGlide, horizontalGlide = 0f;
 
+    public static bool scene_start;
     Rigidbody rb;
     ShipHealth shipStats;
     
@@ -55,6 +56,10 @@ public class ThirdPersonShip : MonoBehaviour
     // used to get the earth's position
     public GameObject earth;
     private Vector3 earthPosition;
+
+    void Awake(){
+        scene_start = false;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -71,21 +76,22 @@ public class ThirdPersonShip : MonoBehaviour
     {
         earthPosition = earth.transform.position;
         //Debug.Log("Earth's position: " + earth.transform.position);
-
-        HandleMovement();
-        HandleBoosting();
+        if(scene_start){
+            HandleMovement();
+            HandleBoosting();
+        }
     }
 
     void HandleMovement()
     {
         //roll
-        rb.AddRelativeTorque(Vector3.back * roll1D * rollTorque * Time.deltaTime);
+        rb.AddRelativeTorque(Vector3.back * roll1D * rollTorque * Time.deltaTime, ForceMode.Acceleration);
 
         //pitch
-        rb.AddRelativeTorque(Vector3.right * Mathf.Clamp(-pitchYaw.y, -1f, 1f) * pitchTorque * Time.deltaTime);
+        rb.AddRelativeTorque(Vector3.right * Mathf.Clamp(-pitchYaw.y, -1f, 1f) * pitchTorque * Time.deltaTime, ForceMode.Acceleration);
 
         //yaw
-        rb.AddRelativeTorque(Vector3.up * Mathf.Clamp(pitchYaw.x, -1f, 1f) * yawTorque * Time.deltaTime);
+        rb.AddRelativeTorque(Vector3.up * Mathf.Clamp(pitchYaw.x, -1f, 1f) * yawTorque * Time.deltaTime, ForceMode.Acceleration);
 
         //thrust
         if(thrust1D > 0.1f || thrust1D < -0.1f)

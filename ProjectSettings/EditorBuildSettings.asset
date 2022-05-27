@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Start.unity
     guid: a87dd062301ce7c49811976f873b849f
   - enabled: 1
+    path: Assets/Scenes/Opening.unity
+    guid: 88e771c6ca3b4364d9458b1bd4853c4a
+  - enabled: 1
     path: Assets/Scenes/MainScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
@@ -17,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Minigame2.unity
     guid: 36ac92a47d495e04a9ad074ead384a84
+  - enabled: 1
+    path: Assets/Scenes/Minigame3.unity
+    guid: b1caf1773ada67840ad95797d3db7e4b
   m_configObjects: {}
