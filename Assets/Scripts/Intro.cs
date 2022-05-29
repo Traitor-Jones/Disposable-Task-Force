@@ -22,6 +22,7 @@ public float scrollSpeed=18;
         pos+=localVectorUp*scrollSpeed*Time.deltaTime;
         transform.position=pos;
     }
+     
     public void ActivateMe (){
         gameObject.SetActive (true);
     }
@@ -35,6 +36,8 @@ public float scrollSpeed=18;
     //    gameObject.SetActive(false);
          SceneManager.LoadScene("MainScene");
     }
-
-
+    public void SkiptoMain() {  
+        SceneManager.LoadScene("MainScene");
+    }
 }
+
