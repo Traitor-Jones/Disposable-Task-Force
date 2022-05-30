@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent (typeof(Rigidbody))]
-
+[RequireComponent (typeof(AudioSource))]
 public class ThirdPersonShip : MonoBehaviour
 {
     [Header("=== Ship Movement Settings ===")]
@@ -53,9 +53,8 @@ public class ThirdPersonShip : MonoBehaviour
     private float upDown1D;
     private Vector2 pitchYaw;
 
-    // used to get the earth's position
-    public GameObject earth;
-    private Vector3 earthPosition;
+    AudioSource idleSound;
+    AudioSource movementSound;
 
     void Awake(){
         scene_start = false;
@@ -68,15 +67,17 @@ public class ThirdPersonShip : MonoBehaviour
         shipStats = GameObject.FindGameObjectWithTag("Player").GetComponent<ShipHealth>();   
         currentBoostAmount = maxBoostAmount;
 
-        earthPosition = earth.transform.position;
+        idleSound = GameObject.FindGameObjectWithTag("PlayerIdleSound").GetComponent<AudioSource>();
+        movementSound = GameObject.FindGameObjectWithTag("PlayerMovementSound").GetComponent<AudioSource>();
+
+        Debug.Log("Idle Movement Sound: " + idleSound);
+        idleSound.Play();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        earthPosition = earth.transform.position;
-        //Debug.Log("Earth's position: " + earth.transform.position);
-        if(scene_start){
+        if(scene_start) {
             HandleMovement();
             HandleBoosting();
         }

@@ -7,6 +7,7 @@ public class PlanetCollision : MonoBehaviour
     public GameObject playerShip;
     public GameObject shipExplosion;
     public GameObject Earth;
+    public AudioSource playerExplosionSound;
 
     Vector3 earthPosition;
     Vector3 originalPlayerShipPosition;
@@ -34,6 +35,7 @@ public class PlanetCollision : MonoBehaviour
     void RevivePlayer() {
         playerShip.transform.position = originalPlayerShipPosition;
         playerShip.SetActive(true);
+        shipExplosion.SetActive(false);
         shipHealth.ResetHealth();
     }
 
@@ -49,6 +51,7 @@ public class PlanetCollision : MonoBehaviour
         shipExplosion.SetActive(true);
 
         playerShip.SetActive(false);
+        playerExplosionSound.Play();
 
         // wait a 3 seconds and then revive the player
         Invoke("RevivePlayer", 3);

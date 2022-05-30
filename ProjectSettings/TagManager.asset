@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Border
+  - Ground
+  - Enemy
+  - PlayerMovementSound
+  - PlayerIdleSound
+  - PlayerExplosion
   layers:
   - Default
   - TransparentFX
