@@ -43,6 +43,9 @@ public class ThirdPersonShip : MonoBehaviour
     public static bool scene_start;
     Rigidbody rb;
     ShipHealth shipStats;
+
+    [SerializeField]
+    private GameObject player;
     
 
     //Input Values
@@ -57,6 +60,11 @@ public class ThirdPersonShip : MonoBehaviour
     AudioSource boostSound;
 
     void Awake(){
+        float x_pos = PlayerPrefs.GetFloat("p_x");
+        float y_pos = PlayerPrefs.GetFloat("p_y");
+        float z_pos = PlayerPrefs.GetFloat("p_z");
+
+        player.transform.position = new Vector3(x_pos, y_pos, z_pos);
         scene_start = false;
     }
 
