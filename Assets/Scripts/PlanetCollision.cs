@@ -60,6 +60,6 @@ public class PlanetCollision : MonoBehaviour
         playerExplosionSound.Play();
 
         // wait a 3 seconds and then revive the player
-        Invoke("RevivePlayer", 3);
+        //Invoke("RevivePlayer", 3);
     }
 }
