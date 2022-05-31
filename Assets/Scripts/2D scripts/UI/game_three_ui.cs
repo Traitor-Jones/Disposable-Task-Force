@@ -29,10 +29,11 @@ public class game_three_ui : MonoBehaviour
             }
         }
 
-        if(GameObject.FindGameObjectWithTag("Player") == null)
-        {
+        if(GameObject.FindGameObjectWithTag("Player") == null){
+            if(!score_manager_gm3.game_three_won){
             deathUI.SetActive(true);
         }
+    }
     }
 
     public void startGame(){

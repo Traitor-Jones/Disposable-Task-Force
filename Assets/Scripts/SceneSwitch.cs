@@ -5,6 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class SceneSwitch : MonoBehaviour
 {
+    public GameObject player;
+
+    private void savePOS(){
+            float pX = player.transform.position.x;
+            float pY = player.transform.position.y;
+            float pZ = player.transform.position.z;
+
+            PlayerPrefs.SetFloat("p_x", pX + 100);
+            PlayerPrefs.SetFloat("p_y", pY + 10);
+            PlayerPrefs.SetFloat("p_z", pZ);
+
+            PlayerPrefs.Save();
+    }
+
     void OnCollisionEnter(Collision collision){
         if(MainMenu.tutorial && main_instructions.return_from_minigame){
             int sceneIndex = Random.Range(1, 4);
@@ -12,12 +26,15 @@ public class SceneSwitch : MonoBehaviour
             main_instructions.return_from_minigame = false;
             switch(sceneIndex){
                 case 1:
+                    savePOS();
                     LoadGame1();
                     break;
                 case 2:
+                    savePOS();
                     LoadGame2();
                     break;
                 case 3:
+                    savePOS();
                     LoadGame3();
                     break;
                 default:

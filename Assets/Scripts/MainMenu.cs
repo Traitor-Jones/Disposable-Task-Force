@@ -6,6 +6,13 @@ public class MainMenu: MonoBehaviour {
     public static bool tutorial = false;
     
     public void PlayGame() {  
+        PlayerPrefs.DeleteAll();
+
+        PlayerPrefs.SetFloat("p_x", 2000);
+        PlayerPrefs.SetFloat("p_y", 16.6913f);
+        PlayerPrefs.SetFloat("p_z", 10000);
+        PlayerPrefs.Save();
+
         SceneManager.LoadScene("Opening");
     }
 

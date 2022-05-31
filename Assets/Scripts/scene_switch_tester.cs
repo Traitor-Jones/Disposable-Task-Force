@@ -5,10 +5,24 @@ using UnityEngine.SceneManagement;
 
 public class scene_switch_tester : MonoBehaviour
 {
+    public GameObject player;
+    
     // Start is called before the first frame update
     void Start()
     {
         
+    }
+
+    private void savePOS(){
+            float pX = player.transform.position.x;
+            float pY = player.transform.position.y;
+            float pZ = player.transform.position.z;
+
+            PlayerPrefs.SetFloat("p_x", pX);
+            PlayerPrefs.SetFloat("p_y", pY);
+            PlayerPrefs.SetFloat("p_z", pZ);
+
+            PlayerPrefs.Save();
     }
 
     // Update is called once per frame
@@ -16,14 +30,17 @@ public class scene_switch_tester : MonoBehaviour
     {
         if(MainMenu.tutorial && main_instructions.return_from_minigame){
             if(Input.GetKeyDown("1")){
+                savePOS();
                 LoadGame1();
             }
 
             if(Input.GetKeyDown("2")){
+                savePOS();
                 LoadGame2();
             }
 
             if(Input.GetKeyDown("3")){
+                savePOS();
                 LoadGame3();
             }
         }
