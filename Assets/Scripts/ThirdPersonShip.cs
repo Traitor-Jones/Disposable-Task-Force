@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent (typeof(Rigidbody))]
-[RequireComponent (typeof(AudioSource))]
 public class ThirdPersonShip : MonoBehaviour
 {
     [Header("=== Ship Movement Settings ===")]
@@ -55,6 +54,7 @@ public class ThirdPersonShip : MonoBehaviour
 
     AudioSource idleSound;
     AudioSource movementSound;
+    AudioSource boostSound;
 
     void Awake(){
         scene_start = false;
@@ -70,8 +70,23 @@ public class ThirdPersonShip : MonoBehaviour
         idleSound = GameObject.FindGameObjectWithTag("PlayerIdleSound").GetComponent<AudioSource>();
         movementSound = GameObject.FindGameObjectWithTag("PlayerMovementSound").GetComponent<AudioSource>();
 
-        Debug.Log("Idle Movement Sound: " + idleSound);
-        //dleSound.Play();
+        PlayIdleMusic();
+    }
+
+    public void PlayIdleMusic(){
+        idleSound.Play();
+    }
+
+    public void StopIdleMusic(){
+        idleSound.Stop();
+    }
+
+    public void PlayMovementMusic(){
+        movementSound.Play();
+    }
+
+    public void StopMovementMusic(){
+        movementSound.Stop();
     }
 
     // Update is called once per frame
@@ -119,7 +134,6 @@ public class ThirdPersonShip : MonoBehaviour
             glide *= thrustGlideReduction;
         }
 
-        
         if(upDown1D > 0.1f || upDown1D < -0.1f)
         {
             rb.AddRelativeForce(Vector3.up * upDown1D * upThrust * Time.fixedDeltaTime);
@@ -145,6 +159,19 @@ public class ThirdPersonShip : MonoBehaviour
             rb.AddRelativeForce(Vector3.right * horizontalGlide * Time.fixedDeltaTime);
 
             horizontalGlide *= leftRightGlideReduction;
+        }
+
+        
+    }
+
+    void Update () {
+        if(scene_start) {
+            if (glide > 0.0f) {
+            Debug.Log("Gliding");
+            PlayMovementMusic();
+        } else {
+            StopMovementMusic();
+        }
         }
     }
 
