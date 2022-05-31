@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent (typeof(Rigidbody))]
-
 public class ThirdPersonShip : MonoBehaviour
 {
     [Header("=== Ship Movement Settings ===")]
@@ -53,9 +52,9 @@ public class ThirdPersonShip : MonoBehaviour
     private float upDown1D;
     private Vector2 pitchYaw;
 
-    // used to get the earth's position
-    public GameObject earth;
-    private Vector3 earthPosition;
+    AudioSource idleSound;
+    AudioSource movementSound;
+    AudioSource boostSound;
 
     void Awake(){
         scene_start = false;
@@ -68,17 +67,61 @@ public class ThirdPersonShip : MonoBehaviour
         shipStats = GameObject.FindGameObjectWithTag("Player").GetComponent<ShipHealth>();   
         currentBoostAmount = maxBoostAmount;
 
-        earthPosition = earth.transform.position;
+        idleSound = GameObject.FindGameObjectWithTag("PlayerIdleSound").GetComponent<AudioSource>();
+        movementSound = GameObject.FindGameObjectWithTag("PlayerMovementSound").GetComponent<AudioSource>();
+
+        PlayIdleMusic();
+    }
+
+    public void PlayIdleMusic(){
+        idleSound.Play();
+    }
+
+    public void StopIdleMusic(){
+        idleSound.Stop();
+    }
+
+    public void PlayMovementMusic(){
+        movementSound.Play();
+    }
+
+    public void StopMovementMusic(){
+        movementSound.Stop();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        earthPosition = earth.transform.position;
-        //Debug.Log("Earth's position: " + earth.transform.position);
-        if(scene_start){
+        if(scene_start) {
             HandleMovement();
             HandleBoosting();
+        }
+    }
+
+    void Update(){
+        if(scene_start) {
+            // get the speed of the rigidbody
+            float speed = rb.velocity.magnitude;
+
+            // we need to play the idle sound if the ship is not moving and the idle sound is not playing already
+            if(speed < 50.0f && !idleSound.isPlaying) {
+                PlayIdleMusic();
+            }
+
+            // we need to stop the idle sound if the ship is moving and the idle sound is playing
+            if(speed > 50.0f && idleSound.isPlaying) {
+                StopIdleMusic();
+            }
+
+            // we need to play the movement sound if the ship is moving and the movement sound is not playing already
+            if(speed > 50.0f && !movementSound.isPlaying) {
+                PlayMovementMusic();
+            }
+
+            // we need to stop the movement sound if the ship is not moving and the movement sound is playing
+            if(speed < 50.0f && movementSound.isPlaying) {
+                StopMovementMusic();
+            }
         }
     }
 
@@ -118,7 +161,6 @@ public class ThirdPersonShip : MonoBehaviour
             glide *= thrustGlideReduction;
         }
 
-        
         if(upDown1D > 0.1f || upDown1D < -0.1f)
         {
             rb.AddRelativeForce(Vector3.up * upDown1D * upThrust * Time.fixedDeltaTime);

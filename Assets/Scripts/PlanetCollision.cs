@@ -7,6 +7,9 @@ public class PlanetCollision : MonoBehaviour
     public GameObject playerShip;
     public GameObject shipExplosion;
     public GameObject Earth;
+    public AudioSource playerExplosionSound;
+
+    ThirdPersonShip shipScript;
 
     Vector3 earthPosition;
     Vector3 originalPlayerShipPosition;
@@ -19,6 +22,7 @@ public class PlanetCollision : MonoBehaviour
     {
         originalPlayerShipPosition = playerShip.transform.position;
         shipHealth = playerShip.GetComponent<ShipHealth>();
+        shipScript = playerShip.GetComponent<ThirdPersonShip>();
     }
 
     // Update is called once per frame
@@ -34,7 +38,11 @@ public class PlanetCollision : MonoBehaviour
     void RevivePlayer() {
         playerShip.transform.position = originalPlayerShipPosition;
         playerShip.SetActive(true);
+        // make ship explosion reset to that it can be enabled in the next explosion
+        shipExplosion.SetActive(false);
         shipHealth.ResetHealth();
+        // play the ship's idle sound
+        shipScript.PlayIdleMusic();
     }
 
     void OnTriggerEnter(Collider other)
@@ -49,6 +57,7 @@ public class PlanetCollision : MonoBehaviour
         shipExplosion.SetActive(true);
 
         playerShip.SetActive(false);
+        playerExplosionSound.Play();
 
         // wait a 3 seconds and then revive the player
         Invoke("RevivePlayer", 3);

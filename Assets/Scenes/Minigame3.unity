@@ -2398,6 +2398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DeathMenuUI: {fileID: 1035992596}
   isDead: 0
+  BackgroundMusicGameObject: {fileID: 516554920}
 --- !u!1 &1147093740
 GameObject:
   m_ObjectHideFlags: 0
