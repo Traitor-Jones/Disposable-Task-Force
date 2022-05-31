@@ -19,6 +19,10 @@ public class Health : MonoBehaviour
     [Header("GUI")]
     [SerializeField] private GameObject exitGUI;
 
+    [Header("Death Sound")]
+    [SerializeField] private AudioClip deathSound;
+    [SerializeField] private AudioClip hurtSound;
+
     private void Awake()
     {
         currHealth = startHealth;
@@ -38,6 +42,8 @@ public class Health : MonoBehaviour
 
             // iframes
             StartCoroutine(Invulnerability());
+
+            SoundManager.instance.PlaySound(hurtSound);
         }
         else
         {
@@ -51,7 +57,7 @@ public class Health : MonoBehaviour
                 exitGUI.SetActive(true);
                 int ship_damage = ShipHealth.ship_health / 3;
                 ShipHealth.ship_health -= ship_damage;
-
+                SoundManager.instance.PlaySound(deathSound);
             }
         }
     }
