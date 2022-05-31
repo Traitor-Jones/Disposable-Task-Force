@@ -13,6 +13,8 @@ public class MainMenu: MonoBehaviour {
         PlayerPrefs.SetFloat("p_z", 10000);
         PlayerPrefs.Save();
 
+        ShipHealth.ship_health = 100;
+
         SceneManager.LoadScene("Opening");
     }
 

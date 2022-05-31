@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MarsBoss.unity
     guid: 15f5536b51a20b449a998b67eb15c603
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 84d2ddea5c0e9764fbe3af69b1a6e570
   m_configObjects: {}
