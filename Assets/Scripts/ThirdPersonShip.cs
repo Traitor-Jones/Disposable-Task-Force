@@ -71,7 +71,7 @@ public class ThirdPersonShip : MonoBehaviour
         movementSound = GameObject.FindGameObjectWithTag("PlayerMovementSound").GetComponent<AudioSource>();
 
         Debug.Log("Idle Movement Sound: " + idleSound);
-        idleSound.Play();
+        //dleSound.Play();
     }
 
     // Update is called once per frame
