@@ -98,6 +98,33 @@ public class ThirdPersonShip : MonoBehaviour
         }
     }
 
+    void Update(){
+        if(scene_start) {
+            // get the speed of the rigidbody
+            float speed = rb.velocity.magnitude;
+
+            // we need to play the idle sound if the ship is not moving and the idle sound is not playing already
+            if(speed < 50.0f && !idleSound.isPlaying) {
+                PlayIdleMusic();
+            }
+
+            // we need to stop the idle sound if the ship is moving and the idle sound is playing
+            if(speed > 50.0f && idleSound.isPlaying) {
+                StopIdleMusic();
+            }
+
+            // we need to play the movement sound if the ship is moving and the movement sound is not playing already
+            if(speed > 50.0f && !movementSound.isPlaying) {
+                PlayMovementMusic();
+            }
+
+            // we need to stop the movement sound if the ship is not moving and the movement sound is playing
+            if(speed < 50.0f && movementSound.isPlaying) {
+                StopMovementMusic();
+            }
+        }
+    }
+
     void HandleMovement()
     {
         //roll
@@ -159,19 +186,6 @@ public class ThirdPersonShip : MonoBehaviour
             rb.AddRelativeForce(Vector3.right * horizontalGlide * Time.fixedDeltaTime);
 
             horizontalGlide *= leftRightGlideReduction;
-        }
-
-        
-    }
-
-    void Update () {
-        if(scene_start) {
-            if (glide > 0.0f) {
-            Debug.Log("Gliding");
-            PlayMovementMusic();
-        } else {
-            StopMovementMusic();
-        }
         }
     }
 
