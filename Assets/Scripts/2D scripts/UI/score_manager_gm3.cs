@@ -8,6 +8,11 @@ public class score_manager_gm3 : MonoBehaviour
     [SerializeField] private GameObject winUI;
     public Text scoreText;
     private float score;
+    public static bool game_three_won;
+
+    void Awake(){
+        game_three_won = false;
+    }
 
     // Update is called once per frame
     void Update()
@@ -23,6 +28,7 @@ public class score_manager_gm3 : MonoBehaviour
 
         if(score >= 30){
             winUI.SetActive(true);
+            game_three_won = true;
             PlayerShipMovement.ship_move = false;
             SpawnEnemies.start_spawn = false;
         }
