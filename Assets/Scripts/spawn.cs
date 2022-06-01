@@ -15,8 +15,8 @@ GameObject Hazard;
 GameObject ALShip;
     private void Start()
     {
-    StartCoroutine(RandomSpawnEverySeconds(4.0f));
-    StartCoroutine(SpawnAlienShip(25.0f));
+    StartCoroutine(RandomSpawnEverySeconds(0.5f));
+    StartCoroutine(SpawnAlienShip(15.0f));
     }
 
 IEnumerator RandomSpawnEverySeconds(float seconds)
@@ -26,7 +26,7 @@ IEnumerator RandomSpawnEverySeconds(float seconds)
   {
     float randomX = Random.Range(0f, 1.1f);
    float randomY = Random.Range(0f, 1.1f);
-   int index = Random.Range(0,6);
+   int index = Random.Range(0,8);
    //Debug.Log(index);
 
      Vector3 v3Pos = Camera.main.ViewportToWorldPoint(new Vector3(randomX, 0.5f, 2400.0f));
