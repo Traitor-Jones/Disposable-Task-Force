@@ -10,6 +10,9 @@ TagManager:
   - PlayerMovementSound
   - PlayerIdleSound
   - PlayerExplosion
+  - Bullet
+  - player_bullet
+  - enemy_bullet
   layers:
   - Default
   - TransparentFX

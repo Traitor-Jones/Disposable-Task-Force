@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class takeDamage : MonoBehaviour
 {
-   public int health = 1;
+   [SerializeField] private GameObject deathUI;
+   public static int health;
 
 	public float invulnPeriod = 0;
 	float invulnTimer = 0;
@@ -28,12 +29,19 @@ public class takeDamage : MonoBehaviour
 		}
 	}
 
-	void OnTriggerEnter2D() {
-		health--;
+	void Awake(){
+		health = 100;
+	}
 
-		if(invulnPeriod > 0) {
-			invulnTimer = invulnPeriod;
-			gameObject.layer = 10;
+	void OnTriggerEnter2D(Collider2D other) {
+		if(other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("enemy_bullet")){
+			Debug.Log("Collided");
+			health--;
+
+			if(invulnPeriod > 0) {
+				invulnTimer = invulnPeriod;
+				gameObject.layer = 10;
+			}
 		}
 	}
 
@@ -62,5 +70,7 @@ public class takeDamage : MonoBehaviour
 
 	void Die() {
 		Destroy(gameObject);
+		boss_fight_ui.boss_start = false;
+		deathUI.SetActive(true);
 	}
 }
