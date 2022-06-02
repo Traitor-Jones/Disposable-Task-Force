@@ -20,7 +20,7 @@ public class Orbit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!pauseMenu.IsPaused())
+        if (!pauseMenu.IsPaused() && !shop_handler.shopActive && ThirdPersonShip.scene_start)
         {
             // make the planet rotate around as it orbits the sun
             transform.Rotate(0.0f, rotationSpeed, 0.0f);

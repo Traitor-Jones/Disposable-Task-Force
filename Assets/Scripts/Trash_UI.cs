@@ -13,8 +13,8 @@ public class Trash_UI : MonoBehaviour
         trashText = GetComponent<TextMeshProUGUI>();
     }
 
-    public void UpdateTrashText(Trash_Inventory trashInventory)
+    void Update()
     {
-        trashText.text = trashInventory.NumberOfTrash.ToString();
+        trashText.text = Trash_Inventory.NumberOfTrash.ToString();
     }
 }
