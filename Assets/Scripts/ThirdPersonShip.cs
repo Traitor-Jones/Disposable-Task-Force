@@ -28,7 +28,7 @@ public class ThirdPersonShip : MonoBehaviour
     [SerializeField]
     private float boostRechargeRate = 0.5f;
     [SerializeField]
-    private float boostMultiplier = 5f;
+    public static float boostMultiplier = 5f;
     private bool boosting = false;
     private float currentBoostAmount;
 
