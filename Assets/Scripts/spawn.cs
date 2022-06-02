@@ -41,30 +41,27 @@ IEnumerator RandomSpawnEverySeconds(float seconds)
 
 IEnumerator SpawnAlienShip(float seconds)
 {
+    while(true)
+    {
+        if(ThirdPersonShip.scene_start){
+        float randomX;
+        float randomY;
+        Vector3 v3Pos;
+        int index = Random.Range(0,3);
+        int SpawnAmt = Random.Range(1,4);
+        //Debug.Log(index);
 
-  while (true)
-  {
-    float randomX;
-   float randomY;
-   Vector3 v3Pos;
-   int index = Random.Range(0,3);
-   int SpawnAmt = Random.Range(1,4);
-   //Debug.Log(index);
-
-     
-    for (int i = 0; i < SpawnAmt; i++){
-      randomX = Random.Range(0f, 0.5f);
-      randomY = Random.Range(-1.1f, 1.1f);
-      v3Pos = Camera.main.ViewportToWorldPoint(new Vector3(randomX, 0.5f, 1600.0f));
-      ALShip = Instantiate(AShips[index].item, v3Pos, AShips[index].Rotation) as GameObject;
-   //   ALShip.AddComponent<AShip>();
+        
+        for (int i = 0; i < SpawnAmt; i++){
+          randomX = Random.Range(0f, 0.5f);
+          randomY = Random.Range(-1.1f, 1.1f);
+          v3Pos = Camera.main.ViewportToWorldPoint(new Vector3(randomX, 0.5f, 1600.0f));
+          ALShip = Instantiate(AShips[index].item, v3Pos, AShips[index].Rotation) as GameObject;
+      //   ALShip.AddComponent<AShip>();
+        }
+      }
+      yield return new WaitForSeconds(seconds);
     }
-    
-
-    yield return new WaitForSeconds(seconds);
-
-
-  }
 }
 }
 
