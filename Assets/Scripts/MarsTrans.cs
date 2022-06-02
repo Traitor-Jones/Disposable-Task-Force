@@ -35,4 +35,8 @@ public float scrollSpeed=18;
     //    gameObject.SetActive(false);
          SceneManager.LoadScene("MarsBoss");
     }
+    
+    public void SkipToMars(){
+        SceneManager.LoadScene("MarsBoss");
+    }
 }

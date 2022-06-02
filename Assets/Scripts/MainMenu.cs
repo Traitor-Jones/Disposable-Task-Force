@@ -18,6 +18,8 @@ public class MainMenu: MonoBehaviour {
         shop_handler.num_revives = 0;
         Trash_Inventory.NumberOfTrash = 0;
 
+        tutorial = false;
+
         SceneManager.LoadScene("Opening");
     }
 
