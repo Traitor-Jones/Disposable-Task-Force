@@ -2303,9 +2303,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1399002426}
-        m_TargetAssemblyTypeName: game_three_ui1, Assembly-CSharp
-        m_MethodName: ExitGame
+      - m_Target: {fileID: 1132582537}
+        m_TargetAssemblyTypeName: DeathUI, Assembly-CSharp
+        m_MethodName: ExitAndLoad
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2398,7 +2398,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DeathMenuUI: {fileID: 1035992596}
   isDead: 0
-  BackgroundMusicGameObject: {fileID: 516554920}
 --- !u!1 &1147093740
 GameObject:
   m_ObjectHideFlags: 0
@@ -3431,7 +3430,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 585188cdc4600544eb408bee749e4b3a, type: 3}
-    m_FontSize: 50
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -3442,7 +3441,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: EXIT
+  m_Text: 'EXIT with
+
+    health penalty'
 --- !u!222 &1936676487
 CanvasRenderer:
   m_ObjectHideFlags: 0

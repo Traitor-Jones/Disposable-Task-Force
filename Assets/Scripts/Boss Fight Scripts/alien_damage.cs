@@ -31,7 +31,9 @@ public class alien_damage : MonoBehaviour
 	void OnTriggerEnter2D(Collider2D other) {
 		if(other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("player_bullet")){
 			health--;
-
+			if(other.gameObject.CompareTag("player_bullet"))
+				upScore();
+				
 			if(invulnPeriod > 0) {
 				invulnTimer = invulnPeriod;
 				gameObject.layer = 10;
@@ -63,7 +65,10 @@ public class alien_damage : MonoBehaviour
 	}
 
 	void Die() {
-		kill_count.score++;
 		Destroy(gameObject);
+	}
+
+	void upScore(){
+		kill_count.score++;
 	}
 }

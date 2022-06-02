@@ -50,4 +50,8 @@ public class boss_fight_ui : MonoBehaviour
         boss_start = true;
         
     }
+
+    public void WinGame(){
+        SceneManager.LoadScene("Credits");
+    }
 }
