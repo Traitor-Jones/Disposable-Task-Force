@@ -8,6 +8,10 @@ public class ShipHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if((ship_health - damage) <= 0){
+            ship_health = 0;
+            Debug.Log("Damage would result in Losing!");
+        }
         if(ship_health > 0){
         ship_health -= damage;
         Debug.Log("Health = " + ship_health.ToString());

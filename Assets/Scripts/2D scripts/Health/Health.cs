@@ -49,9 +49,6 @@ public class Health : MonoBehaviour
                 dead = true;
 
                 exitGUI.SetActive(true);
-                int ship_damage = ShipHealth.ship_health / 3;
-                ShipHealth.ship_health -= ship_damage;
-
             }
         }
     }

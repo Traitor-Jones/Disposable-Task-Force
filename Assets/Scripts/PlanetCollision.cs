@@ -35,16 +35,6 @@ public class PlanetCollision : MonoBehaviour
         originalPlayerShipPosition = new Vector3(playerShip.transform.position.x-3000, playerShip.transform.position.y, playerShip.transform.position.z);
     }
 
-    void RevivePlayer() {
-        playerShip.transform.position = originalPlayerShipPosition;
-        playerShip.SetActive(true);
-        // make ship explosion reset to that it can be enabled in the next explosion
-        shipExplosion.SetActive(false);
-        shipHealth.ResetHealth();
-        // play the ship's idle sound
-        shipScript.PlayIdleMusic();
-    }
-
     void OnTriggerEnter(Collider other)
     {
         // set the ship health to 0 and (for now) keep the ship from entering the planet
@@ -58,8 +48,5 @@ public class PlanetCollision : MonoBehaviour
 
         playerShip.SetActive(false);
         playerExplosionSound.Play();
-
-        // wait a 3 seconds and then revive the player
-        Invoke("RevivePlayer", 3);
     }
 }
