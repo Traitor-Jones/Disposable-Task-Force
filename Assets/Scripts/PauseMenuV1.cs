@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenuV1 : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenuUI;
-    [SerializeField] private bool isPaused;
+    [SerializeField] public static bool isPaused;
 
     private void Update()
     {
@@ -27,13 +27,19 @@ public class PauseMenuV1 : MonoBehaviour
 
     void ActivateMenu()
     {
-        Time.timeScale = 0;
-        pauseMenuUI.SetActive(true);
+        if(ThirdPersonShip.scene_start){
+            if(isPaused || shop_handler.shopActive)
+                Time.timeScale = 0;
+            pauseMenuUI.SetActive(true);
+        }
     }
+
+    
 
     public void DeactivateMenu()
     {
-        Time.timeScale = 1;
+        if(!isPaused && !shop_handler.shopActive)
+            Time.timeScale = 1;
         pauseMenuUI.SetActive(false);
         isPaused = false;
     }

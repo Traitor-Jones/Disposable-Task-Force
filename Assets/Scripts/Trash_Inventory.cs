@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class Trash_Inventory : MonoBehaviour
 {
-    public int NumberOfTrash { get; private set; }
+    public static int NumberOfTrash = 0;
 
     public UnityEvent<Trash_Inventory> OnTrashCollected;
 

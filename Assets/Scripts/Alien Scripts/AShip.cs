@@ -19,20 +19,19 @@ public class AShip : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       float distance = Vector3.Distance(target.position, transform.position);
-        FaceTarget();
-        if (distance <= attackDistance)
-        {
-            if (distance >= bufferDistance)
+       if(ThirdPersonShip.scene_start){
+        float distance = Vector3.Distance(target.position, transform.position);
+            FaceTarget();
+            if (distance <= attackDistance)
             {
-                var step = attackSpeed * Time.deltaTime;
-             //   transform.position += transform.forward * attackSpeed * Time.deltaTime;
-             transform.position = Vector3.MoveTowards(transform.position, target.position, step);
+                if (distance >= bufferDistance)
+                {
+                    var step = attackSpeed * Time.deltaTime;
+                //   transform.position += transform.forward * attackSpeed * Time.deltaTime;
+                transform.position = Vector3.MoveTowards(transform.position, target.position, step);
+                }
             }
-        }
-
-
-     
+       }
     }
 
      private void OnCollisionEnter(Collision collision)

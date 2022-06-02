@@ -14,6 +14,9 @@ public class MainMenu: MonoBehaviour {
         PlayerPrefs.Save();
 
         ShipHealth.ship_health = 100;
+        ThirdPersonShip.boostMultiplier = 5.0f;
+        shop_handler.num_revives = 0;
+        Trash_Inventory.NumberOfTrash = 0;
 
         SceneManager.LoadScene("Opening");
     }
