@@ -30,7 +30,7 @@ public class ThirdPersonShip : MonoBehaviour
     [SerializeField]
     public static float boostMultiplier = 5f;
     private bool boosting = false;
-    private float currentBoostAmount;
+    public static float currentBoostAmount;
 
     [SerializeField, Range(0.001f, 0.999f)]
     private float thrustGlideReduction = 0.999f;
