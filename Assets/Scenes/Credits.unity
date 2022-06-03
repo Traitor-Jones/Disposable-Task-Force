@@ -307,10 +307,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1215353964}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d7fcc4ebdadf994eba13108513e29c4, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ee955791c079c34a8cf76b028dace66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 21
+  scrollSpeed: 18
 --- !u!212 &1215353966
 SpriteRenderer:
   m_ObjectHideFlags: 0

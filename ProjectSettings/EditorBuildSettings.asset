@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: 84d2ddea5c0e9764fbe3af69b1a6e570
+  - enabled: 1
+    path: Assets/Scenes/VideoDump.unity
+    guid: 15922b48c4bf3c547b81d54b5e4aea4a
   m_configObjects: {}
