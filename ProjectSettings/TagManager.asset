@@ -11,8 +11,14 @@ TagManager:
   - PlayerIdleSound
   - PlayerExplosion
 <<<<<<< HEAD
+  - Bullet
+  - player_bullet
+  - enemy_bullet
+=======
+<<<<<<< HEAD
   - Planet
 =======
+>>>>>>> master
 >>>>>>> master
   layers:
   - Default
@@ -24,7 +30,11 @@ TagManager:
 <<<<<<< HEAD
   - 
 =======
+<<<<<<< HEAD
+  - 
+=======
   - Minimap
+>>>>>>> master
 >>>>>>> master
   - 
   - 
