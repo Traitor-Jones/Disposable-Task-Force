@@ -36,7 +36,7 @@ public class takeDamage : MonoBehaviour
 	void OnTriggerEnter2D(Collider2D other) {
 		if(other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("enemy_bullet")){
 			Debug.Log("Collided");
-			health--;
+			health -= 3;
 
 			if(invulnPeriod > 0) {
 				invulnTimer = invulnPeriod;
