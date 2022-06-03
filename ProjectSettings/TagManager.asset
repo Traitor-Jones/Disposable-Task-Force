@@ -10,6 +10,16 @@ TagManager:
   - PlayerMovementSound
   - PlayerIdleSound
   - PlayerExplosion
+<<<<<<< HEAD
+  - Bullet
+  - player_bullet
+  - enemy_bullet
+=======
+<<<<<<< HEAD
+  - Planet
+=======
+>>>>>>> master
+>>>>>>> master
   layers:
   - Default
   - TransparentFX
@@ -17,7 +27,15 @@ TagManager:
   - 
   - Water
   - UI
+<<<<<<< HEAD
+  - 
+=======
+<<<<<<< HEAD
+  - 
+=======
   - Minimap
+>>>>>>> master
+>>>>>>> master
   - 
   - 
   - 
