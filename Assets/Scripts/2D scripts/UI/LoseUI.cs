@@ -41,7 +41,7 @@ public class LoseUI : MonoBehaviour
         
     }
 
-    public void ExitToCredits(){
+    public void ExitToStart(){
         if(shop_handler.num_revives > 0){
             --shop_handler.num_revives;
             LoseMessage.SetActive(false);
@@ -49,7 +49,7 @@ public class LoseUI : MonoBehaviour
         }
         else{
             LoseMessage.SetActive(false);
-            SceneManager.LoadScene("Credits");
+            SceneManager.LoadScene("Start");
         }
     }
 }

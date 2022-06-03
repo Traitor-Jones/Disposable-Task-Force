@@ -52,6 +52,6 @@ public class boss_fight_ui : MonoBehaviour
     }
 
     public void WinGame(){
-        SceneManager.LoadScene("Credits");
+        SceneManager.LoadScene("VideoDump");
     }
 }
