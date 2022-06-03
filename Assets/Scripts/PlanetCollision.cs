@@ -37,16 +37,23 @@ public class PlanetCollision : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        // set the ship health to 0 and (for now) keep the ship from entering the planet
-        // we will have the ship explode instead at some point
-        shipHealth.TakeDamage(shipHealth.getHealth());
-        playerShip.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        // get tag of collided object
+        string tag = other.gameObject.tag;
 
-        // set the explosion position to the ship's position and activate it
-        shipExplosion.transform.position = shipExplosionPos;
-        shipExplosion.SetActive(true);
+        // the only time we explode the player's ship is whe
+        if (tag == "Player")
+        {
+            // set the ship health to 0 and (for now) keep the ship from entering the planet
+            // we will have the ship explode instead at some point
+            shipHealth.TakeDamage(shipHealth.getHealth());
+            playerShip.GetComponent<Rigidbody>().velocity = Vector3.zero;
 
-        playerShip.SetActive(false);
-        playerExplosionSound.Play();
+            // set the explosion position to the ship's position and activate it
+            shipExplosion.transform.position = shipExplosionPos;
+            shipExplosion.SetActive(true);
+
+            playerShip.SetActive(false);
+            playerExplosionSound.Play();
+        }
     }
 }
