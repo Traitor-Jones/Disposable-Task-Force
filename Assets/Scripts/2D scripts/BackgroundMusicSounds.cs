@@ -11,7 +11,6 @@ public class BackgroundMusicSounds : MonoBehaviour
         if(backgroundMusic == null)
         {
             backgroundMusic = this;
-            DontDestroyOnLoad(backgroundMusic);
         }
         else
         {

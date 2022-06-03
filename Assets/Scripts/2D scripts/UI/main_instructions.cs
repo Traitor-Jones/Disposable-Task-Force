@@ -11,9 +11,9 @@ public class main_instructions : MonoBehaviour
     public void Awake(){
         if(MainMenu.tutorial && !return_from_minigame){
             InstructionUI.SetActive(false);
-            returnUI.SetActive(true);
-            ThirdPersonShip.scene_start = true;
-            Time.timeScale = 1;
+            if(ShipHealth.ship_health > 0){
+                returnUI.SetActive(true);
+            }
         }
         else{
             Time.timeScale = 0;

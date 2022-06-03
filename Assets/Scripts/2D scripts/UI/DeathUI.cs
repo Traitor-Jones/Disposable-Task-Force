@@ -15,12 +15,19 @@ public class DeathUI : MonoBehaviour
         // Calculate 33% of Damage as Int
 
         float temp = ShipHealth.ship_health;
-        temp = temp / 3.0f;
-        temp = Mathf.Ceil(temp);
 
-        int damage_to_take = (int) temp;
+        if(temp <= 10){
+            ShipHealth.ship_health = 0;
+        }
+        else{
+            temp = temp / 3.0f;
+            temp = Mathf.Ceil(temp);
 
-        ShipHealth.ship_health -= damage_to_take;
+            int damage_to_take = (int) temp;
+
+            ShipHealth.ship_health -= damage_to_take;
+        }
+
         SceneManager.LoadScene("MainScene");
     }
 }
