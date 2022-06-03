@@ -8,14 +8,19 @@ public class Trash : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        collectSound.Play();
+        string tag = other.gameObject.tag;
 
-        Trash_Inventory trashInventory = other.GetComponent<Trash_Inventory>();
-
-        if (trashInventory != null)
+        if (tag == "Player")
         {
-            trashInventory.TrashCollected();
-            gameObject.SetActive(false);
+            collectSound.Play();
+
+            Trash_Inventory trashInventory = other.GetComponent<Trash_Inventory>();
+
+            if (trashInventory != null)
+            {
+                trashInventory.TrashCollected();
+                gameObject.SetActive(false);
+            }
         }
     }
 }

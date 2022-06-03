@@ -10,6 +10,7 @@ TagManager:
   - PlayerMovementSound
   - PlayerIdleSound
   - PlayerExplosion
+  - Planet
   layers:
   - Default
   - TransparentFX
